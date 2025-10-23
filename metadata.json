@@ -1,0 +1,5 @@
+{
+  "name": "Ứng dụng Bốc thăm Coi thi",
+  "description": "Một ứng dụng web nhỏ để bốc thăm và phân công ngẫu nhiên cán bộ coi thi cho các phòng thi, vai trò và lịch thi khác nhau. Kết quả có thể được xuất ra file Excel.",
+  "requestFramePermissions": []
+}
