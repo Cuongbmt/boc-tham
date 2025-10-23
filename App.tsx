@@ -276,6 +276,7 @@ const App: React.FC = () => {
   }
 
   const availableSlotsCount = assignments.filter(a => !a.proctor).length;
+  const assignedList = assignments.filter(a => a.proctor);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
@@ -310,6 +311,41 @@ const App: React.FC = () => {
                             Bạn đã được phân công làm <span className="font-bold">{lastResult.role}</span> tại phòng <span className="font-bold">{lastResult.examSlot.room}</span>.
                         </p>
                     </div>
+                )}
+            </section>
+        )}
+
+        {currentUser.role === 'admin' && (
+            <section className="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg mb-12">
+                <h3 className="font-bold text-xl mb-4 text-gray-700">Tổng quan Bốc thăm</h3>
+                <p className="text-gray-600 mb-4">
+                    Đã hoàn thành: <span className="font-bold text-green-600">{assignedList.length}</span> / <span className="font-bold text-gray-800">{assignments.length}</span> vị trí.
+                </p>
+                {assignedList.length > 0 ? (
+                    <div className="overflow-x-auto border border-gray-200 rounded-lg">
+                        <table className="min-w-full bg-white">
+                            <thead className="bg-gray-50">
+                                <tr>
+                                    <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
+                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cán bộ</th>
+                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phòng thi</th>
+                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vai trò</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-gray-200">
+                                {assignedList.map((a, index) => (
+                                    <tr key={index} className="hover:bg-gray-50">
+                                        <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{a.proctor?.name}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{a.examSlot.room}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{a.role}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                ) : (
+                    <p className="text-center text-gray-500 py-4">Chưa có cán bộ nào bốc thăm.</p>
                 )}
             </section>
         )}
