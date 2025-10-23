@@ -37,69 +37,26 @@ const InfoIcon = (props: React.SVGProps<SVGSVGElement>) => (
         <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
     </svg>
 );
-const LoginIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const AdminIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m-3 0-3 3m0 0 3 3m-3-3H3" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.39.44 1.022.12 1.45l-.527.737c-.25.35-.272.806-.108 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.11v1.093c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.108 1.204l.527.738c.32.427.27 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.108-.397.165-.71.505-.78.93l-.15.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.149-.894c-.07-.424-.384-.764-.78-.93-.398-.164-.855-.142-1.205.108l-.737.527a1.125 1.125 0 0 1-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.527-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.108.397-.165.71-.505.78-.93l.15-.894Z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
     </svg>
 );
-const LogoutIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const UserIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
     </svg>
 );
-
-const AdminLoginModal: React.FC<{ onLogin: (username: string, password: string) => void; onCancel: () => void; }> = ({ onLogin, onCancel }) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleSubmit = (e: FormEvent) => {
-        e.preventDefault();
-        onLogin(username, password);
-    };
-
-    return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-sm">
-                <h2 className="text-2xl font-bold text-center mb-6">Đăng nhập Quản trị</h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label htmlFor="admin-user" className="block text-sm font-medium text-gray-700 mb-1">Tên đăng nhập</label>
-                        <input
-                            id="admin-user"
-                            type="text"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                            placeholder="admin"
-                            required
-                        />
-                    </div>
-                     <div>
-                        <label htmlFor="admin-pass" className="block text-sm font-medium text-gray-700 mb-1">Mật khẩu</label>
-                        <input
-                            id="admin-pass"
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                            placeholder="********"
-                            required
-                        />
-                    </div>
-                    <div className="flex gap-4 pt-2">
-                        <Button type="button" onClick={onCancel} variant="secondary" className="w-full">Hủy</Button>
-                        <Button type="submit" variant="primary" className="w-full">Đăng nhập</Button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    );
-};
-
+const SwitchRoleIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+    </svg>
+);
 
 const App: React.FC = () => {
-  const [role, setRole] = useState<'user' | 'admin'>('user');
-  const [showAdminLogin, setShowAdminLogin] = useState(false);
+  const [role, setRole] = useState<'user' | 'admin' | null>(null);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
   const [session, setSession] = useState<Session | null>(null);
   const [assignments, setAssignments] = useState<Assignment[]>([]);
   const [userDrawnAssignment, setUserDrawnAssignment] = useState<Assignment | null>(null);
@@ -109,13 +66,21 @@ const App: React.FC = () => {
   const [selectedRooms, setSelectedRooms] = useState<string[]>([]);
   
   const [proctorName, setProctorName] = useState('');
+  
+  const [adminUsername, setAdminUsername] = useState('');
+  const [adminPassword, setAdminPassword] = useState('');
 
-  // Load role, session and app data from localStorage on initial render
+  // Load state from localStorage on initial render
   useEffect(() => {
     try {
         const savedRole = localStorage.getItem('proctorDrawRole');
-        if (savedRole === 'admin') {
-            setRole('admin');
+        if (savedRole === 'admin' || savedRole === 'user') {
+            setRole(savedRole as 'user' | 'admin');
+        }
+
+        const savedAdminAuth = localStorage.getItem('proctorDrawAdminAuth');
+        if (savedAdminAuth === 'true') {
+            setIsAdminAuthenticated(true);
         }
 
         const savedData = localStorage.getItem('proctorDrawApp');
@@ -135,7 +100,7 @@ const App: React.FC = () => {
         }
     } catch (error) {
         console.error("Failed to load data from localStorage", error);
-        localStorage.clear(); // Clear corrupted data
+        localStorage.clear();
     }
   }, []);
 
@@ -153,21 +118,28 @@ const App: React.FC = () => {
     }
   }, [session, assignments]);
 
-  const handleAdminLogin = (username: string, password: string) => {
-    if (username.toLowerCase() === 'admin' && password === 'abc123') {
-      setRole('admin');
-      localStorage.setItem('proctorDrawRole', 'admin');
-      setShowAdminLogin(false);
+  const handleSelectRole = (selectedRole: 'user' | 'admin') => {
+      setRole(selectedRole);
+      localStorage.setItem('proctorDrawRole', selectedRole);
+  };
+
+  const handleBackToSelection = () => {
+      setRole(null);
+      setIsAdminAuthenticated(false);
+      localStorage.removeItem('proctorDrawRole');
+      localStorage.removeItem('proctorDrawAdminAuth');
+  };
+
+  const handleAdminLogin = (e: FormEvent) => {
+    e.preventDefault();
+    if (adminUsername.toLowerCase() === 'admin' && adminPassword === 'abc123') {
+      setIsAdminAuthenticated(true);
+      localStorage.setItem('proctorDrawAdminAuth', 'true');
     } else {
       alert('Tên đăng nhập hoặc mật khẩu không chính xác.');
     }
   };
 
-  const handleLogout = () => {
-    setRole('user');
-    localStorage.removeItem('proctorDrawRole');
-  };
-  
   const handleRoomSelection = (room: string) => {
     setSelectedRooms(prev => 
       prev.includes(room) 
@@ -202,7 +174,7 @@ const App: React.FC = () => {
     
     setAssignments(initialAssignments);
     setUserDrawnAssignment(null);
-    localStorage.removeItem('proctorDrawnName'); // Clear previous user's draw
+    localStorage.removeItem('proctorDrawnName');
   };
 
   const handleDrawForUser = (e: FormEvent) => {
@@ -272,42 +244,72 @@ const App: React.FC = () => {
         localStorage.removeItem('proctorDrawApp');
     }
   }, []);
-  
-  const isAdmin = role === 'admin';
 
-  const commonHeader = (
-     <header className="text-center mb-10 relative">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">Hệ thống Bốc thăm Coi thi</h1>
-        {session && (
-            <div className="mt-3 text-lg text-gray-600 font-semibold space-x-4">
-                <span>Ngày: <span className="text-blue-600">{session.date}</span></span>
-                <span>|</span>
-                <span>Giờ: <span className="text-blue-600">{session.time}</span></span>
-                 <span>|</span>
-                <span>Phòng: <span className="text-blue-600">{session.rooms.join(', ')}</span></span>
+  // --- RENDER LOGIC ---
+
+  // 1. Role Selection Screen
+  if (!role) {
+    return (
+        <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center text-center p-4">
+             <div className="max-w-md w-full mx-auto">
+                <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-2">Hệ thống Bốc thăm Coi thi</h1>
+                <p className="text-lg text-gray-600 mb-10">Vui lòng chọn vai trò của bạn để tiếp tục.</p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button onClick={() => handleSelectRole('admin')} variant="primary" className="w-full sm:w-auto" Icon={AdminIcon}>
+                        Tôi là Quản trị viên
+                    </Button>
+                    <Button onClick={() => handleSelectRole('user')} variant="secondary" className="w-full sm:w-auto" Icon={UserIcon}>
+                        Tôi là Cán bộ coi thi
+                    </Button>
+                </div>
             </div>
-        )}
-        <div className="absolute top-0 right-0 flex items-center space-x-2">
-            {isAdmin ? (
-                <Button onClick={handleLogout} variant="secondary" Icon={LogoutIcon}>Đăng xuất</Button>
-            ) : (
-                <Button onClick={() => setShowAdminLogin(true)} variant="secondary" Icon={LoginIcon}>
-                    Đăng nhập Quản trị
-                </Button>
-            )}
         </div>
-    </header>
-  );
+    );
+  }
 
-  if (isAdmin) {
+  // 2. Admin View
+  if (role === 'admin') {
+    if (!isAdminAuthenticated) {
+        return (
+            <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+                <div className="max-w-sm w-full mx-auto bg-white p-8 rounded-2xl shadow-lg relative">
+                     <button onClick={handleBackToSelection} className="absolute top-4 left-4 text-gray-500 hover:text-gray-800 transition" title="Chọn lại vai trò">
+                        <SwitchRoleIcon className="w-6 h-6"/>
+                    </button>
+                    <h2 className="text-2xl font-bold text-center mb-6">Đăng nhập Quản trị</h2>
+                    <form onSubmit={handleAdminLogin} className="space-y-4">
+                        <div>
+                            <label htmlFor="admin-user" className="block text-sm font-medium text-gray-700 mb-1">Tên đăng nhập</label>
+                            <input
+                                id="admin-user" type="text" value={adminUsername}
+                                onChange={(e) => setAdminUsername(e.target.value)}
+                                className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                placeholder="admin" required
+                            />
+                        </div>
+                         <div>
+                            <label htmlFor="admin-pass" className="block text-sm font-medium text-gray-700 mb-1">Mật khẩu</label>
+                            <input
+                                id="admin-pass" type="password" value={adminPassword}
+                                onChange={(e) => setAdminPassword(e.target.value)}
+                                className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                placeholder="********" required
+                            />
+                        </div>
+                        <Button type="submit" variant="primary" className="w-full">Đăng nhập</Button>
+                    </form>
+                </div>
+            </div>
+        );
+    }
+    
+    // Admin Authenticated View
     if (!session) {
       return (
-        <>
-            {showAdminLogin && <AdminLoginModal onLogin={handleAdminLogin} onCancel={() => setShowAdminLogin(false)} />}
             <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
                 <div className="max-w-lg w-full mx-auto bg-white p-8 rounded-2xl shadow-lg relative">
-                     <button onClick={handleLogout} className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition" title="Đăng xuất">
-                        <LogoutIcon className="w-6 h-6"/>
+                     <button onClick={handleBackToSelection} className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition" title="Chọn lại vai trò">
+                        <SwitchRoleIcon className="w-6 h-6"/>
                     </button>
                     <header className="text-center mb-6">
                         <h1 className="text-3xl font-extrabold text-gray-800">Bắt đầu Phiên Bốc thăm</h1>
@@ -330,9 +332,7 @@ const App: React.FC = () => {
                                 {ALL_ROOMS.map(room => (
                                     <div key={room}>
                                         <input 
-                                            type="checkbox" 
-                                            id={`room-${room}`} 
-                                            value={room}
+                                            type="checkbox" id={`room-${room}`} value={room}
                                             checked={selectedRooms.includes(room)}
                                             onChange={() => handleRoomSelection(room)}
                                             className="hidden peer"
@@ -348,7 +348,6 @@ const App: React.FC = () => {
                     </form>
                 </div>
             </div>
-        </>
       );
     }
 
@@ -356,9 +355,22 @@ const App: React.FC = () => {
     const assignedList = assignments.filter(a => a.proctor);
     return (
         <div className="min-h-screen bg-gray-50 text-gray-800">
-             {showAdminLogin && <AdminLoginModal onLogin={handleAdminLogin} onCancel={() => setShowAdminLogin(false)} />}
             <main className="container mx-auto px-4 py-8 md:py-12">
-                {commonHeader}
+                <header className="text-center mb-10 relative">
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">Bảng điều khiển Quản trị</h1>
+                    {session && (
+                        <div className="mt-3 text-lg text-gray-600 font-semibold space-x-4">
+                            <span>Ngày: <span className="text-blue-600">{session.date}</span></span>
+                            <span>|</span>
+                            <span>Giờ: <span className="text-blue-600">{session.time}</span></span>
+                             <span>|</span>
+                            <span>Phòng: <span className="text-blue-600">{session.rooms.join(', ')}</span></span>
+                        </div>
+                    )}
+                    <div className="absolute top-0 right-0">
+                         <Button onClick={handleBackToSelection} variant="secondary" Icon={SwitchRoleIcon}>Chọn lại vai trò</Button>
+                    </div>
+                </header>
                 <section className="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg mb-12">
                     <h3 className="font-bold text-xl mb-4 text-gray-700">Tổng quan Bốc thăm</h3>
                     <p className="text-gray-600 mb-4">
@@ -417,14 +429,12 @@ const App: React.FC = () => {
   }
 
   // --- User View ---
-  if (!session) {
+  if (role === 'user') {
+    if (!session) {
       return (
         <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center text-center p-4">
-            {showAdminLogin && <AdminLoginModal onLogin={handleAdminLogin} onCancel={() => setShowAdminLogin(false)} />}
             <div className="absolute top-4 right-4">
-                 <Button onClick={() => setShowAdminLogin(true)} variant="secondary" Icon={LoginIcon}>
-                    Đăng nhập Quản trị
-                </Button>
+                 <Button onClick={handleBackToSelection} variant="secondary" Icon={SwitchRoleIcon}>Chọn lại vai trò</Button>
             </div>
             <div className="max-w-md w-full mx-auto bg-white p-8 rounded-2xl shadow-lg">
                  <InfoIcon className="w-16 h-16 text-blue-500 mx-auto mb-4" />
@@ -432,39 +442,55 @@ const App: React.FC = () => {
                 <p className="mt-2 text-gray-600">Vui lòng chờ Quản trị viên khởi tạo phiên và thử lại sau.</p>
             </div>
         </div>
+      );
+    }
+  
+    // User View: Session Active
+    const availableSlotsCount = assignments.filter(a => !a.proctor).length;
+    return (
+        <div className="min-h-screen bg-gray-50 text-gray-800">
+            <main className="container mx-auto px-4 py-8 md:py-12">
+                <header className="text-center mb-10 relative">
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">Hệ thống Bốc thăm Coi thi</h1>
+                    {session && (
+                        <div className="mt-3 text-lg text-gray-600 font-semibold space-x-4">
+                            <span>Ngày: <span className="text-blue-600">{session.date}</span></span>
+                            <span>|</span>
+                            <span>Giờ: <span className="text-blue-600">{session.time}</span></span>
+                             <span>|</span>
+                            <span>Phòng: <span className="text-blue-600">{session.rooms.join(', ')}</span></span>
+                        </div>
+                    )}
+                    <div className="absolute top-0 right-0">
+                        <Button onClick={handleBackToSelection} variant="secondary" Icon={SwitchRoleIcon}>Chọn lại vai trò</Button>
+                    </div>
+                </header>
+                <section className="max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg mb-12">
+                     {userDrawnAssignment ? (
+                        <div>
+                            <h3 className="font-bold text-xl text-center text-green-600 mb-4">Bốc thăm thành công!</h3>
+                            <p className="text-center text-gray-600 mb-6">Đây là kết quả của bạn, <span className="font-bold">{userDrawnAssignment.proctor?.name}</span>.</p>
+                            <AssignmentCard assignment={userDrawnAssignment} />
+                        </div>
+                    ) : (
+                        <div>
+                            <h3 className="font-bold text-xl mb-4 text-gray-700 text-center">Nhập thông tin và Bốc thăm</h3>
+                            <p className="text-center text-gray-500 mb-4">Còn lại <span className="font-bold text-green-600">{availableSlotsCount}</span> vị trí trống.</p>
+                            <form onSubmit={handleDrawForUser} className="flex flex-col sm:flex-row gap-2">
+                                <input type="text" value={proctorName} onChange={e => setProctorName(e.target.value)} placeholder="Nhập họ và tên của bạn" className="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" required/>
+                                <Button type="submit" variant="primary" className="w-full sm:w-auto" Icon={DrawIcon} disabled={availableSlotsCount === 0}>
+                                    Bốc thăm
+                                </Button>
+                            </form>
+                        </div>
+                    )}
+                </section>
+            </main>
+        </div>
     );
   }
-  
-  // User View: Session Active
-  const availableSlotsCount = assignments.filter(a => !a.proctor).length;
-  return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
-        {showAdminLogin && <AdminLoginModal onLogin={handleAdminLogin} onCancel={() => setShowAdminLogin(false)} />}
-        <main className="container mx-auto px-4 py-8 md:py-12">
-            {commonHeader}
-            <section className="max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg mb-12">
-                 {userDrawnAssignment ? (
-                    <div>
-                        <h3 className="font-bold text-xl text-center text-green-600 mb-4">Bốc thăm thành công!</h3>
-                        <p className="text-center text-gray-600 mb-6">Đây là kết quả của bạn, <span className="font-bold">{userDrawnAssignment.proctor?.name}</span>.</p>
-                        <AssignmentCard assignment={userDrawnAssignment} />
-                    </div>
-                ) : (
-                    <div>
-                        <h3 className="font-bold text-xl mb-4 text-gray-700 text-center">Nhập thông tin và Bốc thăm</h3>
-                        <p className="text-center text-gray-500 mb-4">Còn lại <span className="font-bold text-green-600">{availableSlotsCount}</span> vị trí trống.</p>
-                        <form onSubmit={handleDrawForUser} className="flex flex-col sm:flex-row gap-2">
-                            <input type="text" value={proctorName} onChange={e => setProctorName(e.target.value)} placeholder="Nhập họ và tên của bạn" className="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" required/>
-                            <Button type="submit" variant="primary" className="w-full sm:w-auto" Icon={DrawIcon} disabled={availableSlotsCount === 0}>
-                                Bốc thăm
-                            </Button>
-                        </form>
-                    </div>
-                )}
-            </section>
-        </main>
-    </div>
-  );
+
+  return null; // Should not be reached
 };
 
 export default App;
