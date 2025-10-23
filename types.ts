@@ -1,4 +1,3 @@
-
 export interface Proctor {
   id: number;
   name: string;
@@ -14,6 +13,12 @@ export interface ExamSlot {
   date: string;
   time: string;
   room: string;
+}
+
+export interface Session {
+  date: string;
+  time: string;
+  rooms: string[];
 }
 
 export interface Assignment {

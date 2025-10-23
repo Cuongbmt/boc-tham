@@ -1,6 +1,2 @@
-import { Proctor, ExamSlot } from './types';
-
-// Dữ liệu này hiện sẽ được quản lý bởi người dùng trong giao diện.
-export const PROCTORS: Proctor[] = [];
-
-export const EXAM_SLOTS: ExamSlot[] = [];
+// Dùng để định nghĩa tất cả các phòng có thể chọn
+export const ALL_ROOMS = ['G203', 'G205', 'G206', 'G207'];
